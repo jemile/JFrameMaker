@@ -15,7 +15,7 @@ public class Main {
 	 Find way to send the code to file, will include stuff that can't be changed
 	 
 	 @ Author: Trevor W.
-	 @ Version 1.01
+	 @ Version 1.02
 	 
 	 */
 	

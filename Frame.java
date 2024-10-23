@@ -19,8 +19,6 @@ public class Frame extends JFrame implements Variables
 {
 	private int width = 500;
 	private int height = 600;
-	private Font font = new Font("Times New Roman", Font.BOLD, 16);
-
 	
 	/*
 	 This is my first kind of big project so I am thinking of a lot but button will have the option to be added to already made panel if not already, and loop
@@ -50,6 +48,8 @@ public class Frame extends JFrame implements Variables
 
 	// Customization for Button
 	private JLabel text;
+	private JLabel buttonSizeXName;
+	private JLabel buttonSizeYName;
 	
 	// Method used to display different features based on the frameItem selected
 	public void displayFeatures()
@@ -70,8 +70,33 @@ public class Frame extends JFrame implements Variables
 			name.setBounds(60, 45, 470, 5);
 			name.setFont(font);
 			
+			buttonSizeXName = new JLabel();
+			buttonSizeXName.setBounds(10, 100, 250, 30);
+			buttonSizeXName.setFont(font);
+			buttonSizeXName.setText("X Starting Pos: 500.00");
+			
+			buttonSizeX.setBounds(300, 100, 400, 25);
+			buttonSizeX.setOpaque(false);
+			buttonSizeX.setBackground(new Color (0, 0, 0, 0));
+			buttonSizeX.addChangeListener(e -> updateSliderValue());
+
+			buttonSizeYName = new JLabel();
+			buttonSizeYName.setBounds(10, 200, 250, 30);
+			buttonSizeYName.setFont(font);
+			buttonSizeYName.setText("Y Starting Pos: 500.00");
+			
+			buttonSizeY.setBounds(300, 200, 400, 25);
+			buttonSizeY.setOpaque(false);
+			buttonSizeY.setBackground(new Color (0, 0, 0, 0));
+			buttonSizeY.addChangeListener(e -> updateSliderValue());
+			
 			panel.add(text);
 			panel.add(name);
+			panel.add(buttonSizeXName);
+			panel.add(buttonSizeX);
+			panel.add(buttonSizeYName);
+			panel.add(buttonSizeY);
+
 			panel.revalidate();
 			panel.repaint();
 		}
@@ -125,11 +150,18 @@ public class Frame extends JFrame implements Variables
 	
 	public void updateSliderValue()
 	{	
-		String m_xText = "X Size: " + Integer.toString(menuSizeX.getValue());
-		String m_yText = "Y Size: " + Integer.toString(menuSizeY.getValue());
-
+		String m_xText = "X Size: " + Integer.toString(menuSizeX.getValue()) + ".00";
+		String m_yText = "Y Size: " + Integer.toString(menuSizeY.getValue()) + ".00";
+		
+		String m_xButton = "X Starting Pos: " + Integer.toString(buttonSizeX.getValue()) + ".00";
+		String m_yButton = "Y Starting Pos: " + Integer.toString(buttonSizeY.getValue()) + ".00";
+		
 		xText.setText(m_xText);
 		yText.setText(m_yText);
+		buttonSizeXName.setText(m_xButton);
+		buttonSizeYName.setText(m_yButton);
+		
+		
 	}
 	
 	// Constructor
@@ -180,13 +212,13 @@ public class Frame extends JFrame implements Variables
 		menuText.setText("Menu Title: ");
 		
 		menuName = new JTextField();
-		menuName.setBounds(90, panelHeight + 125, 380, 20);
+		menuName.setBounds(120, panelHeight + 125, 340, 20);
 		menuName.setFont(font);
 		
 		xText = new JLabel();
-		xText.setBounds(10, panelHeight + 150, 100, 20);
+		xText.setBounds(10, panelHeight + 150, 115, 20);
 		xText.setFont(font);
-		xText.setText("X Size: 500");
+		xText.setText("X Size: 500.00");
 		
 		menuSizeX = new JSlider(0, 1920, 500);
 		menuSizeX.setBounds(120, panelHeight + 150, 340, 20);
@@ -195,9 +227,9 @@ public class Frame extends JFrame implements Variables
 		menuSizeX.addChangeListener(e -> updateSliderValue());
 
 		yText = new JLabel();
-		yText.setBounds(10, panelHeight + 180, 100, 20);
+		yText.setBounds(10, panelHeight + 180, 115, 20);
 		yText.setFont(font);
-		yText.setText("Y Size: 500");
+		yText.setText("Y Size: 500.00");
 		
 		menuSizeY = new JSlider(0, 1080, 500);
 		menuSizeY.setBounds(120, panelHeight + 180, 340, 20);
