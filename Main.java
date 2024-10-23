@@ -13,6 +13,10 @@ public class Main {
 	 Add basic menu and sliders
 	 Find way to preview the features with real update: thinking a button action event and make a new JFrame
 	 Find way to send the code to file, will include stuff that can't be changed
+	 
+	 @ Author: Trevor W.
+	 @ Version 1.01
+	 
 	 */
 	
 	public static void main(String[] args) {
